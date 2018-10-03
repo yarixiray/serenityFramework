@@ -1,5 +1,8 @@
+package studentsInfo;
+
 import io.restassured.RestAssured;
 import net.serenitybdd.junit.runners.SerenityRunner;
+import net.serenitybdd.rest.SerenityRest;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +20,7 @@ public class FirstSerenityTest {
     @Test
     public void getAllStudents() {
 
-        RestAssured.given()
+        SerenityRest.given()
                 .when()
                 .get("/list")
                 .then()
@@ -25,5 +28,10 @@ public class FirstSerenityTest {
                 .all()
                 .statusCode(200);
 
+    }
+
+    @Test
+    public void testWithError() {
+        System.out.println(5/0);
     }
 }
