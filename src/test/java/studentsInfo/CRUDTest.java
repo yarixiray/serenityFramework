@@ -23,18 +23,18 @@ import static org.hamcrest.Matchers.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CRUDTest extends TestBase {
 
-    static String firstName = TestUtils.getRandomValue() + " SMOKEUSER";
-    static String lastName = TestUtils.getRandomValue() + " SMOKEUSER";
-    static String programme = "ComputerScience";
-    static String email = TestUtils.getRandomValue() + "xyz@gmail.com";
-    static int studentId;
+    private static String firstName = TestUtils.getRandomValue() + " SMOKEUSER";
+    private static String lastName = TestUtils.getRandomValue() + " SMOKEUSER";
+    private static String programme = "ComputerScience";
+    private static String email = TestUtils.getRandomValue() + "xyz@gmail.com";
+    private static int studentId;
 
 
     @Title("Create a new student")
     @Test
     public void test01createStudent() {
 
-        List<String> courses = new ArrayList<String>();
+        List<String> courses = new ArrayList<>();
         courses.add("C++");
         courses.add("Python");
 
@@ -87,7 +87,7 @@ public class CRUDTest extends TestBase {
     @Test
     public void test03updateStudent() {
 
-        List<String> courses = new ArrayList<String>();
+        List<String> courses = new ArrayList<>();
         courses.add("C++");
         courses.add("Python");
 
