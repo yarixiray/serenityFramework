@@ -110,6 +110,7 @@ public class CRUDTest extends TestBase {
                 .all()
                 .statusCode(200);
     }
+
     @Title("Verify if the updated student was added to the application")
     @Test
     public void test04getUpdatedStudent() {
@@ -131,6 +132,28 @@ public class CRUDTest extends TestBase {
         System.out.println(value);
 
         assertThat(value, hasValue(firstName));
+
+    }
+
+    @Title("Delete the student and verify if the student is deleted")
+    @Test
+    public void test05deleteStudent() {
+
+        SerenityRest
+                .rest()
+                .given()
+                .when()
+                .delete("/" + studentId);
+
+        SerenityRest
+                .rest()
+                .given()
+                .when()
+                .get("/" + studentId)
+                .then()
+                .log()
+                .all()
+                .statusCode(404);
 
     }
 
