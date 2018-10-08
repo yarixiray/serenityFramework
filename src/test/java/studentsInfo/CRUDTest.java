@@ -1,14 +1,9 @@
 package studentsInfo;
 
-import io.restassured.http.ContentType;
-import model.Student;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Title;
-import org.apache.http.HttpConnection;
-import org.apache.http.protocol.HTTP;
-import org.apache.tools.ant.taskdefs.condition.Http;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -16,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import serenity.StudentSerenitySteps;
 import testBase.TestBase;
+import utils.ReuseableSpecifications;
 import utils.TestUtils;
 
 import java.util.ArrayList;
@@ -49,6 +45,7 @@ public class CRUDTest extends TestBase {
 
         steps.createStudent(firstName,lastName,email,programme,courses)
              .statusCode(HttpStatus.CREATED_201);
+        //.spec(ReuseableSpecifications.getGenericResponseSpec());
 
     }
 
