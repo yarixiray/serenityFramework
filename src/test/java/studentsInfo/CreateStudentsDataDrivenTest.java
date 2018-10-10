@@ -5,6 +5,7 @@ import lombok.Setter;
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Title;
+import net.thucydides.junit.annotations.Concurrent;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.Test;
@@ -17,18 +18,18 @@ import java.util.List;
 
 @Getter
 @Setter
+@Concurrent(threads = "4x")
 @UseTestDataFrom("testData/studentInfo.csv")
 @RunWith(SerenityParameterizedRunner.class)
 public class CreateStudentsDataDrivenTest extends TestBase {
 
+    @Steps
+    StudentSerenitySteps steps;
     private String firstName;
     private String lastName;
     private String email;
     private String programme;
     private String course;
-
-    @Steps
-    StudentSerenitySteps steps;
 
     @Title("Data driven test for adding multiple students to the Students App.")
     @Test
